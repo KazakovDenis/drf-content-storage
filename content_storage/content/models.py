@@ -7,6 +7,7 @@ class Page(models.Model):
 
     class Meta:
         verbose_name = _('Page')
+        verbose_name_plural = _('Pages')
         default_related_name = 'pages'
 
     def __str__(self):
@@ -33,6 +34,7 @@ class Video(Content):
 
     class Meta(Content.Meta):
         verbose_name = _('Video')
+        verbose_name_plural = _('Videos')
         default_related_name = 'videos'
 
 
@@ -42,12 +44,14 @@ class Audio(Content):
 
     class Meta(Content.Meta):
         verbose_name = _('Audio')
+        verbose_name_plural = _('Audios')
         default_related_name = 'audios'
 
 
 class Text(Content):
-    content = models.TextField(_('File'))
+    content = models.TextField(_('Content'))
 
     class Meta(Content.Meta):
         verbose_name = _('Text')
+        verbose_name_plural = _('Texts')
         default_related_name = 'texts'
