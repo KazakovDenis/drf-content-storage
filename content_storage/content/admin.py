@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import register
 from django.utils.translation import gettext_lazy as _
 
-from content.models import Audio, Page, Text, Video
+from content.models import Page, Video, Audio, Text
 
 
 class ContentInline(admin.TabularInline):
