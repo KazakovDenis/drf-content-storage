@@ -1,8 +1,10 @@
+import sys
 from pathlib import Path
 
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.append(str(BASE_DIR.absolute()))
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -18,6 +20,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+THIRD_PARTY_APPS = (
+    'django_extensions',
+    'rest_framework',
+)
+
+LOCAL_APPS = (
+    'content',
+)
+
+INSTALLED_APPS.extend([*THIRD_PARTY_APPS, *LOCAL_APPS])
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,7 +88,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
