@@ -18,9 +18,9 @@ dev:
 lint:
 	flake8
 
-#? test:           Run linter and unit tests
+#? test:           Run linters and unit tests
 test:
-	python3 -m pytest -v
+	python3 -m pytest
 
 #? cover:          Run code test coverage measurement
 cover:
@@ -34,3 +34,7 @@ qa: lint cover
 #? translate:      Generate translations to russian locale
 translate:
 	 python3 manage.py makemessages --locale=ru --ignore=venv/* --ignore=volumes/*
+
+#? worker:         Run celery worker
+worker:
+	celery -A content_storage.core worker -l INFO --autoscale=10,2 --purge

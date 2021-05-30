@@ -95,9 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
+# -------------------------------- I18N & L10N --------------------------------
 LANGUAGE_CODE = 'ru-RU'
 
 LANGUAGES = (
@@ -118,9 +116,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+# ----------------------------------- FILES -----------------------------------
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'public' / 'static'
@@ -133,3 +129,13 @@ MEDIA_ROOT = BASE_DIR / 'public' / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ---------------------------------- CELERY -----------------------------------
+BROKER_URL = config('BROKER_URL', default='redis://redis:6379/0')
+CELERY_BROKER_URL = BROKER_URL
+CELERY_RESULT_BACKEND = BROKER_URL
+CELERY_TIMEZONE = TIME_ZONE
+
+# ----------------------------------- API -------------------------------------
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True

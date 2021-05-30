@@ -18,6 +18,7 @@ jobs:
       install: pip install -r requirements/dev.txt
       before_script: cp example.env .env
       script: make qa
+      after_success: bash <(curl -s https://codecov.io/bash)
 
     - stage: build
       name: "Build a docker image"

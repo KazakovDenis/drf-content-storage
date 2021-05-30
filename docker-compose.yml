@@ -7,25 +7,34 @@ x-env-defaults: &defaults
   env_file: .env
   environment:
     DB_HOST: db
-    BROKER_HOST: redis
+    BROKER_URL: redis://redis:6379/0
+
+x-env-django: &django
+  <<: *defaults
+  build:
+    context: .
+    target: production
+  image: kazakovdu/content-storage:latest
+  depends_on:
+    - db
+    - redis
 
 services:
 
   runserver:
-    <<: *defaults
-    build:
-      context: .
-      target: production
-    image: kazakovdu/content-storage:latest
+    <<: *django
     container_name: django
     command: make production
     volumes:
       - $VOLUMES_DIR/public:/opt/app/content_storage/public
     ports:
       - "8000:8000"
-    depends_on:
-      - db
-      - redis
+
+  worker:
+    <<: *django
+    command: |
+      dockerize --wait tcp://db:5432 --wait tcp://redis:6379
+      -- make worker
 
   db:
     <<: *defaults
@@ -43,7 +52,7 @@ services:
     <<: *defaults
     image: redis:6-alpine
     ports:
-      - $BROKER_PORT:6379
+      - 6379:6379
     volumes:
       - redis:/data
 

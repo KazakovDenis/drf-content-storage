@@ -10,6 +10,7 @@ python3 manage.py compilemessages --locale ru
 
 dockerize --wait tcp://db:5432 --wait tcp://redis:6379
 python3 manage.py migrate --noinput
+python3 manage.py create_admin
 
 if [ -ne $@ ]; then
   make production
