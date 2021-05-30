@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin import register
 from django.utils.translation import gettext_lazy as _
 
-from content.models import Page, Video, Audio, Text
+from content.models import Page, PageContentTypes, Video, Audio, Text
 
 
 class ContentInline(admin.TabularInline):
@@ -24,7 +24,7 @@ class TextInline(ContentInline):
 
 @register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'videos', 'audios', 'texts')
+    list_display = ['id', 'title'] + PageContentTypes.values
     search_fields = ('title',)
     list_filter = ('title',)
     inlines = (VideoInline, AudioInline, TextInline)

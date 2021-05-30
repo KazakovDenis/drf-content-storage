@@ -1,5 +1,12 @@
-from django.db import models
+from django.db import models, transaction
+from django.db.models import F
 from django.utils.translation import gettext_lazy as _
+
+
+class PageContentTypes(models.TextChoices):
+    VIDEO = 'videos', _('Videos')
+    AUDIO = 'audios', _('Audios')
+    TEXT = 'texts', _('Texts')
 
 
 class Page(models.Model):
@@ -9,6 +16,13 @@ class Page(models.Model):
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
         default_related_name = 'pages'
+
+    def increment_counters(self):
+        """Increment counters of this page contents"""
+        for content_type in PageContentTypes.values:
+            content = getattr(self, content_type)
+            with transaction.atomic():
+                content.select_for_update().update(counter=F('counter') + 1)
 
     def __str__(self):
         return self.title
