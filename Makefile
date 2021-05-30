@@ -14,9 +14,12 @@ production:
 dev:
 	python3 -m manage runserver 0.0.0.0:8000
 
+#? lint:           Run static code analysis
+lint:
+	flake8
+
 #? test:           Run linter and unit tests
 test:
-	flake8
 	python3 -m pytest -v
 
 #? cover:          Run code test coverage measurement
@@ -24,3 +27,10 @@ cover:
 	python3 -m coverage run
 	python3 -m coverage report
 	python3 -m coverage html
+
+#? qa:             Run complex code analysis
+qa: lint cover
+
+#? translate:      Generate translations to russian locale
+translate:
+	 python3 manage.py makemessages --locale=ru --ignore=venv/* --ignore=volumes/*

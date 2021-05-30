@@ -1,0 +1,30 @@
+language: python
+
+python:
+  - "3.8"
+
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE=kazakovdu/content-storage
+    - TAG=${TRAVIS_TAG:-latest}
+
+jobs:
+  include:
+    - stage: test
+      name: "Run linters and tests"
+      install: pip install -r requirements/dev.txt
+      before_script: cp example.env .env
+      script: make qa
+
+    - stage: build
+      name: "Build a docker image"
+      install: skip
+      script: docker build -t $IMAGE:$TAG .
+
+stages:
+  - test
+  - name: build
+    if: tag IS blank
