@@ -1,0 +1,11 @@
+venv
+*.secrets
+**/migrations
+**/test*
+**/*.log
+**/__pycache__
+**/.pytest_cache
+**/.idea
+**/test.db
+**/*.sqlite3
+README.md
