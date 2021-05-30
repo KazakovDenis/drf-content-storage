@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 19:31+0000\n"
+"POT-Creation-Date: 2021-05-30 20:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,51 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: content_storage/core/settings.py:104
+#: content_storage/content/models.py:6 content_storage/content/models.py:17
+msgid "Title"
+msgstr "Название"
+
+#: content_storage/content/models.py:9
+msgid "Page"
+msgstr "Страница"
+
+#: content_storage/content/models.py:18
+msgid "Counter"
+msgstr "Счетчик"
+
+#: content_storage/content/models.py:20
+msgid "Created at"
+msgstr "Создано"
+
+#: content_storage/content/models.py:31 content_storage/content/models.py:40
+#: content_storage/content/models.py:49
+msgid "File"
+msgstr "Файл"
+
+#: content_storage/content/models.py:32
+msgid "Subtitles"
+msgstr "Субтитры"
+
+#: content_storage/content/models.py:35
+msgid "Video"
+msgstr "Видеозапись"
+
+#: content_storage/content/models.py:41
+msgid "Bit rate"
+msgstr "Битрейт"
+
+#: content_storage/content/models.py:44
+msgid "Audio"
+msgstr "Аудиозапись"
+
+#: content_storage/content/models.py:52
+msgid "Text"
+msgstr "Текст"
+
+#: content_storage/core/settings.py:102
 msgid "Russian"
 msgstr "Русский"
 
-#: content_storage/core/settings.py:105
+#: content_storage/core/settings.py:103
 msgid "English"
 msgstr "Английский"

@@ -1,6 +1,7 @@
 # Custom
 .idea
 .coverage
+volumes/public/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

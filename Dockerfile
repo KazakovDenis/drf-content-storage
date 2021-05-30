@@ -21,5 +21,4 @@ COPY content_storage ./content_storage
 FROM code as production
 
 EXPOSE 8000
-ENTRYPOINT ./entrypoint.sh
 CMD make production
