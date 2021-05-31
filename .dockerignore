@@ -1,6 +1,5 @@
 venv
 *.secrets
-**/migrations
 **/test*
 **/*.log
 **/__pycache__
