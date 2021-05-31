@@ -1,0 +1,16 @@
+[
+{
+  "model": "content.page",
+  "pk": 1,
+  "fields": {
+    "title": "Главная страница"
+  }
+},
+{
+  "model": "content.page",
+  "pk": 2,
+  "fields": {
+    "title": "Новости"
+  }
+}
+]

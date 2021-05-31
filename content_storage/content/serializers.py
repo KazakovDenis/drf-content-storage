@@ -33,4 +33,4 @@ class PageSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Page
-        fields = ('url', 'title', 'videos', 'audios', 'texts')
+        fields = ('id', 'url', 'title', 'videos', 'audios', 'texts')
