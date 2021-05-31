@@ -12,3 +12,4 @@ dockerize --wait tcp://db:5432 --wait tcp://redis:6379
 python3 manage.py migrate --noinput
 python3 manage.py create_admin
 python3 manage.py load_demo
+make production

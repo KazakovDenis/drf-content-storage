@@ -23,8 +23,7 @@ services:
 
   runserver:
     <<: *django
-    container_name: django
-    command: make production
+    command: ./entrypoint.sh
     volumes:
       - $VOLUMES_DIR/public:/opt/app/content_storage/public
     ports:
