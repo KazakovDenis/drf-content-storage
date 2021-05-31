@@ -37,6 +37,7 @@ jobs:
       script: docker build -t $IMAGE:$TAG .
 
 stages:
+  - waiting_db
   - test
   - name: build
     if: tag IS blank
